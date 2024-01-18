@@ -25,17 +25,25 @@ final product = [
   },
   {
     'id': '4',
-    'title': 'Product 4',
+    'title': 'Puma',
     'price': 59.99,
-    'imageurl': 'assets/images/airforce2.png',
+    'imageurl': 'assets/images/puma.png',
     'company': 'Addidas',
     'sizes': ['S', 'M', 'L']
   },
   {
     'id': '5',
-    'title': 'Product 5',
+    'title': 'Converse',
     'price': 69.99,
-    'imageurl': 'assets/images/balenciagia2.png',
+    'imageurl': 'assets/images/allstar1.png',
+    'company': 'Nike',
+    'sizes': ['M', 'L', 'XL']
+  },
+  {
+    'id': '6',
+    'title': 'Reebok',
+    'price': 49.99,
+    'imageurl': 'assets/images/reebok.png',
     'company': 'Nike',
     'sizes': ['M', 'L', 'XL']
   },
