@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shoping_app/global_variable.dart';
+import 'package:provider/provider.dart';
+import 'package:shoping_app/cart_list_provider.dart';
 
 class ProductDetails extends StatefulWidget {
   final Map<String, Object> product;
-  // final Map<String, Object> cartService;
+
   const ProductDetails({super.key, required this.product});
 
   @override
@@ -11,7 +12,30 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  String selecteditem = "";
+  String selectedShoesize = "";
+
+  void onTap() {
+    //print("Add to cart added"),
+    if (selectedShoesize != "") {
+      Provider.of<CardListProvider>(context, listen: false).addToCart(
+        {
+          'id': widget.product["id"],
+          'title': widget.product['title'],
+          'price': widget.product['price'],
+          'imageurl': widget.product['imageurl'],
+          'company': widget.product['company'],
+          'sizes': selectedShoesize,
+        },
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Your product was added to cart successfully")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Please, choose a shoe size")));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,9 +75,6 @@ class _ProductDetailsState extends State<ProductDetails> {
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    //for tesing purpose
-                    final productItem = product[index];
-                    // print("product item here for debugging $productItem");
                     final sizes =
                         (widget.product["sizes"] as List<String>)[index];
                     return Padding(
@@ -61,12 +82,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
-                            selecteditem = sizes;
+                            selectedShoesize = sizes;
                             // print("For testing $selecteditem");
                           });
                         },
                         child: Chip(
-                            backgroundColor: selecteditem == sizes
+                            backgroundColor: selectedShoesize == sizes
                                 ? Theme.of(context).primaryColor
                                 : null,
                             label: Text(
@@ -81,16 +102,12 @@ class _ProductDetailsState extends State<ProductDetails> {
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton.icon(
                 icon: const Icon(Icons.shopping_cart),
-                label: const Text("Add to Cart"),
+                label: const Text("Add to Cart Button"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).primaryColor,
                   minimumSize: const Size(double.infinity, 50),
                 ),
-                onPressed: () => {
-                  //get the product in specified index
-
-                  // then add the product to the cart list
-                },
+                onPressed: onTap,
               ),
             )
           ]),

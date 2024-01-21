@@ -4,7 +4,7 @@ import 'package:shoping_app/product_card.dart';
 import 'package:shoping_app/product_details.dart';
 
 class ProductList extends StatefulWidget {
-  ProductList({super.key});
+  const ProductList({super.key});
   @override
   State<ProductList> createState() => _ProductListState();
 }
@@ -20,7 +20,7 @@ class _ProductListState extends State<ProductList> {
   @override
   Widget build(BuildContext context) {
     selectedFilter = companyFilters[0];
-    print("inite function called $selectedFilter");
+    // print("inite function called $selectedFilter");
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -40,7 +40,8 @@ class _ProductListState extends State<ProductList> {
                       decoration: InputDecoration(
                         border: outLinInputBorder,
                         enabledBorder: outLinInputBorder,
-                        prefixIcon: Icon(Icons.search),
+                        //implement search functionality in second release
+                        prefixIcon: const Icon(Icons.search),
                         hintText: "Search",
                       ),
                     ),
@@ -61,6 +62,8 @@ class _ProductListState extends State<ProductList> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 10),
                       child: GestureDetector(
+                          //Todo: 1. Filters are not working
+
                           onTap: () {
                             setState(() {
                               selectedFilter = textValue;
@@ -93,7 +96,7 @@ class _ProductListState extends State<ProductList> {
                           .push(MaterialPageRoute(builder: (context) {
                         return ProductDetails(product: productList);
                       })),
-                      print("$productList} ")
+                      // print("$productList} ")
                     },
                     child: ProductCards(
                       color: index.isEven

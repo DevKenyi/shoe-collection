@@ -48,13 +48,13 @@ final product = [
     'sizes': ['M', 'L', 'XL']
   },
 ];
-final cartService = [
-  {
-    'id': '3',
-    'title': 'Product 3',
-    'price': 49.99,
-    'imageurl': 'assets/images/Addidas2.png',
-    'company': 'Balenciaga',
-    'sizes': ['L', 'XL', 'XXL']
-  },
-];
+// final cartService = [
+//   {
+//     'id': '3',
+//     'title': 'Addidas',
+//     'price': 49.99,
+//     'imageurl': 'assets/images/Addidas2.png',
+//     'company': 'Balenciaga',
+//     'sizes': "XXL",
+//   },
+// ];

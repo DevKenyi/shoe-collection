@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentPageIndex = 0;
-  final List<Widget> page = [ProductList(), const CartList()];
+  final List<Widget> page = [const ProductList(), const CartList()];
   @override
   void initState() {
     super.initState();
@@ -26,10 +26,12 @@ class _HomeState extends State<Home> {
         children: page,
       ),
       bottomNavigationBar: BottomNavigationBar(
-       
         currentIndex: currentPageIndex,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "", ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "",
+          ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.shopping_cart,
@@ -41,7 +43,6 @@ class _HomeState extends State<Home> {
         onTap: (value) {
           setState(() {
             currentPageIndex = value;
-            print("for debugging $value");
           });
         },
       ),
